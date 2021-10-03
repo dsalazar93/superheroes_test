@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\SuperheroController;
+use App\Http\Controllers\API\V1\TokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\API\V1\SuperheroController;
 //     return $request->user();
 // });
 
-Route::get('v1/allsuperheroes',[SuperheroController::class, 'callApi']);
-Route::get('v1/superhero/{superhero_id}', [SuperheroController::class, 'callSuperHero']);
-Route::get('v1/superheroes/{superheroes_ids}', [SuperheroController::class, 'callSuperHeroes']);
+Route::get('v1/allsuperheroes/{token}',[SuperheroController::class, 'callApi'])->middleware('token.valid');
+Route::get('v1/superhero/{superhero_id}/{token}/', [SuperheroController::class, 'callSuperHero'])->middleware('token.valid');
+Route::get('v1/superheroes/{superheroes_ids}/{token}', [SuperheroController::class, 'callSuperHeroes'])->middleware('token.valid');
+Route::get('v1/getToken', [TokenController::class, 'generateToken']);
