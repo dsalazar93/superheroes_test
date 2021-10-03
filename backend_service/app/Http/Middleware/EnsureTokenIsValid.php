@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 class EnsureTokenIsValid
 {
     
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if($request->route('token')){
-            if(!Token::where('token', $request->route('token'))->exists()){
+        if($request->input('token')){
+            if(!Token::where('token', $request->input('token'))->exists()){
                 return response()->json(['message' => 'No autorizado']);
             }
         }
-         
+
         return $next($request);
     }
 }
