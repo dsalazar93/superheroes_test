@@ -2,17 +2,38 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDivide, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
 import Services from '../../Services/Services'
+import CheckVotes from '../../Helpers/CheckVotes'
+import RemoveVote from '../../Helpers/RemoveVote'
+import Navbar from '../Navbar/Navbar'
 
 export default function SuperHero() {
 
   const { id } = useParams()
 
   const [hero, setHero] = useState([])
+  const [negativeVote, setNegativeVote] = useState(false)
+
+  function handleAddVotes(superhero_id){
+    const  activateNegativeVote = CheckVotes(superhero_id)
+    if(activateNegativeVote && !negativeVote){
+      setNegativeVote(!negativeVote)
+    }
+  }
+
+  function handleSubtractVotes(superhero_id){
+    const deactivateNegativeVote = RemoveVote(superhero_id)
+    if(deactivateNegativeVote && negativeVote){
+      setNegativeVote(!negativeVote)
+    }
+  }
 
   useEffect(() => {
+    const activateNegativeVote = CheckVotes(id)
+    setNegativeVote(activateNegativeVote)
+
     Services.superhero(id).then(response => {
       setHero(response.data)
     })
@@ -21,6 +42,7 @@ export default function SuperHero() {
 
   return (
     <Fragment >
+      <Navbar />
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 mt-5 mb-3">
@@ -46,7 +68,14 @@ export default function SuperHero() {
                     <p>{hero.description}</p>
                     <div className="row">
                       <div className="col-12 d-flex justify-content-end">
-                        <FontAwesomeIcon icon={faThumbsUp} />
+                        <div className="me-3">
+                        <FontAwesomeIcon icon={faThumbsUp} onClick={() => handleAddVotes(hero.id)}/> 
+                        </div>
+                        {negativeVote ? (
+                          <FontAwesomeIcon icon={faThumbsDown} onClick={() => handleSubtractVotes(hero.id)}/>
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     </div>
                   </div>

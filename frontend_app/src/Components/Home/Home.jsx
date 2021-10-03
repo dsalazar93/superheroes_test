@@ -4,6 +4,7 @@ import Card from '../Card/Card'
 import Services from '../../Services/Services'
 
 import './styles/home.css'
+import Navbar from '../Navbar/Navbar'
 
 export default function Home() {
   const [heroes, setHeroes] = useState([])
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <Fragment>
+      <Navbar />
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 mt-5 mb-3">

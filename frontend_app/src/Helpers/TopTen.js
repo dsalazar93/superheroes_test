@@ -12,5 +12,10 @@ export default function TopTen(){
     return 0
   })
 
-  console.log(ranking)
+  if(ranking.length <= 10){
+    return ranking
+  } else {
+    let topTenRanking = ranking.splice(0,10)
+    return topTenRanking
+  }
 }

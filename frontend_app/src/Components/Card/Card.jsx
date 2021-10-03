@@ -1,10 +1,11 @@
-import React, {Fragment, useState} from "react"
+import React, {Fragment, useEffect, useState} from "react"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
 import Vote from "../../Helpers/Vote"
 import RemoveVote from "../../Helpers/RemoveVote"
+import CheckVotes from "../../Helpers/CheckVotes"
 
 
 import './styles/card.css'
@@ -26,6 +27,11 @@ export default function Card(hero){
       setNegativeVote(!negativeVote)
     }
   }
+
+  useEffect(() => {
+    const activateNegativeVote = CheckVotes(hero.data.id)
+    setNegativeVote(activateNegativeVote)
+  },[])
 
   return(
     <Fragment>
