@@ -1,6 +1,11 @@
+html{
+  background-color: rgb(83, 83, 83);
+}
+
 body{
   max-width: 1366px;
   width: 100%;
   display: table;
-  margin:auto
+  margin:auto;
+  height:100vh;
 }

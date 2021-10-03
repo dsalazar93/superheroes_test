@@ -12,6 +12,7 @@ import Navbar from '../Navbar/Navbar'
 export default function SuperHero() {
 
   const { id } = useParams()
+  const lorem = 'Lorem ipsum dolor sit amet consectetur adipiscing elit cum ridiculus hendrerit eleifend, natoque in tincidunt rutrum potenti suspendisse ac laoreet pellentesque. Aenean rutrum porttitor euismod hac dictumst proin natoque suscipit per condimentum velit, fermentum lacinia himenaeos potenti inceptos ullamcorper nulla nibh felis. Tincidunt ullamcorper placerat duis lacinia mus ut, natoque blandit magnis ligula posuere fermentum a, neque himenaeos aenean diam tempor. Penatibus nibh sociis tristique molestie sociosqu duis curae magnis aenean, conubia ultrices gravida dictum ornare non luctus pretium orci feugiat, facilisi libero consequat primis odio aliquam pulvinar ad. Morbi non aptent accumsan rutrum senectus vel taciti porta conubia per pharetra, urna fermentum class justo sociis euismod ad sapien nisl.'
 
   const [hero, setHero] = useState([])
   const [negativeVote, setNegativeVote] = useState(false)
@@ -47,9 +48,6 @@ export default function SuperHero() {
         <div className="row">
           <div className="col-12 mt-5 mb-3">
             <h1 className="text-center">Súper Héroes de MARVEL</h1>
-            <Link to="/">
-              Regresar
-            </Link>
           </div>
           {hero.length !== 0 ? (
             <div className="col-10 offset-1">
@@ -65,7 +63,7 @@ export default function SuperHero() {
                 <div className="row p-3">
                   <div className="col-12">
                     <h3>{hero.name}</h3>
-                    <p>{hero.description}</p>
+                    <p>{hero.description === '' ? lorem : hero.description}</p>
                     <div className="row">
                       <div className="col-12 d-flex justify-content-end">
                         <div className="me-3">

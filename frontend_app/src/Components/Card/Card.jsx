@@ -35,9 +35,9 @@ export default function Card(hero){
 
   return(
     <Fragment>
-      <div className="col-12 col-md-4 mb-3 d-flex align-items-center cardHero">
-        <div className="row p-3 h-100 border">
-          <div className="col-12 h-100">
+      <div className="col-12 col-sm-6 col-md-4 mb-3 d-flex align-items-center cardHero">
+        <div className="row p-3 h-100">
+          <div className="col-12 h-100 border rounded p-2 d-flex align-items-center">
             <div className="row">
               <div className="col-4 d-flex align-items-center justify-content-center">
                 <Link to={`/superhero/${hero.data.id}`} >
@@ -48,9 +48,9 @@ export default function Card(hero){
                 <Link to={`/superhero/${hero.data.id}`} >
                   <h5>{hero.data.name}</h5>
                 </Link>
-                <p>{hero.data.description !== '' ? hero.data.description.substring(0, 141) + '...' : ''}</p>
+                <p>{hero.data.description !== '' ? hero.data.description.substring(0, 141) + '...' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit velit semper egestas himenaeos, primis pellentesque lacus tempus massa at aptent iaculis.'}</p>
               </div>
-              <div className="col-12 d-flex justify-content-end">
+              <div className="col-12 d-flex justify-content-end align-items-center">
                 <div className="me-3">
                   <FontAwesomeIcon icon={faThumbsUp} onClick={() => handleAddVotes(hero.data.id)}/>
                 </div>
