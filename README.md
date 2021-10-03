@@ -73,10 +73,10 @@ Con estos pasos realizados la aplicación se puede visualizar en navegador a tra
 
 - El diseño frontend de la aplicación esta muy vinculado al uso de clases de la libreria Bootstrap y CSS.
 - El servicio web cuenta con los siguientes endpoints:
--- http://localhost:8000/api/v1/allsuperheroes (Carga la data de todos los superheroes)
--- http://localhost:8000/api/v1/superhero/{superhero_id} (Carga la data de un superheroe trayendolo por el id)
--- http://localhost:8000/api/v1/superheroes/{superheroes_ids} (Carga la data de unos superheroes específicos, sirviendo este endpoint para el ranking)
--- http://localhost:8000/api/v1/getToken (Genera un nuevo token por si se desea cambiar en el consumo que se hace desde el frontend)
+- http://localhost:8000/api/v1/allsuperheroes (Carga la data de todos los superheroes)
+- http://localhost:8000/api/v1/superhero/{superhero_id} (Carga la data de un superheroe trayendolo por el id)
+- http://localhost:8000/api/v1/superheroes/{superheroes_ids} (Carga la data de unos superheroes específicos, sirviendo este endpoint para el ranking)
+- http://localhost:8000/api/v1/getToken (Genera un nuevo token por si se desea cambiar en el consumo que se hace desde el frontend)
 
 **Nota: Todos los endpoints que cargan información de superheores, obligatoriamente deben tener en el query params el token.**
 - Proyecto realizado por [dsalazar93](https://github.com/dsalazar93)
